@@ -1,2 +1,0 @@
-# WeatherProject
-Created with CodeSandbox
