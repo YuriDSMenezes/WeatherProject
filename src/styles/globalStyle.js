@@ -11,15 +11,10 @@ export default createGlobalStyle`
 
 html, body , #root {
   height: 100vh;
-  width:100%;
 }
 
 body {
   background:#171618;
-  display:grid;
-  grid-template-columns: 1fr 400px;
-  grid-template-areas: 
-  "left right";
   color: #fff;
   font: 16px 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased !important
