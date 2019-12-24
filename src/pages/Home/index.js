@@ -43,12 +43,10 @@ export default function Home() {
         async function callApi() {
             const API_KEY = '0ccad757b8948d21b05011856bae6950'
             const response = await api.get(`/weather?q=Brasília,br&appid=${API_KEY}`)
-            setDates([...dates,response])
-            console.log(dates)
+            setDates([...dates, response.data])
         }
         callApi()
     }, [])
-
 
     return (
         <Container>
@@ -60,7 +58,7 @@ export default function Home() {
                 <Content>
                     <h1>
                         <span>14º</span>Graus Celsos Portiolio
-          </h1>
+                    </h1>
                     <div>05:28 - Friday , 12 December 2019</div>
                 </Content>
             </ContainerLeft>
@@ -68,7 +66,7 @@ export default function Home() {
                 <PieceContainer>
                     <div>
                         <h3>City</h3>
-                        <p>Brasília</p>
+                        <p>{dates.name}</p>
                         <button type='button'>Change</button>
                     </div>
                 </PieceContainer>
