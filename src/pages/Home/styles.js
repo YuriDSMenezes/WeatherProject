@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   display: grid;
-  grid-template-columns: 1fr 500px;
+  grid-template-columns: 1fr 600px;
   grid-template-areas: "containerLeft containerRight";
   background: #1e1d1e;
   margin: 20px;

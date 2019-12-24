@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import api from '../../services/api'
 import {
     LineChart,
     Line,
     XAxis,
     YAxis,
-    CartesianGrid,
     Tooltip,
     Legend,
-    ResponsiveContainer
 } from 'recharts'
 
 import {
@@ -20,20 +19,37 @@ import {
 } from "./styles";
 
 import { MdMenu } from 'react-icons/md'
+import { stringify } from "querystring";
+import { parse } from "uri-js";
+import { log } from "util";
+
 
 const data = [
-    { name: 'Page A', pv: 2400, amt: 2400 },
-    { name: 'Page B', pv: 1398, amt: 2210 },
-    { name: 'Page C', pv: 9800, amt: 2290 },
-    { name: 'Page D', pv: 3908, amt: 2000 },
-    { name: 'Page E', pv: 4800, amt: 2181 },
-    { name: 'Page F', pv: 3800, amt: 2500 },
-    { name: 'Page G', pv: 4300, amt: 2100 },
+    { name: 'Segunda', temperatura: 25 },
+    { name: 'Terça', temperatura: 22 },
+    { name: 'Quarta', temperatura: 18 },
+    { name: 'Quinta', temperatura: 23 },
+    { name: 'Sexta', temperatura: 19 },
+    { name: 'Sabado', temperatura: 28 },
+    { name: 'Domingo', temperatura: 20 },
 ];
 
-
-
 export default function Home() {
+
+    const [dates, setDates] = useState([])
+
+
+    useEffect(() => {
+        async function callApi() {
+            const API_KEY = '0ccad757b8948d21b05011856bae6950'
+            const response = await api.get(`/weather?q=Brasília,br&appid=${API_KEY}`)
+            setDates([...dates,response])
+            console.log(dates)
+        }
+        callApi()
+    }, [])
+
+
     return (
         <Container>
             <ContainerLeft>
@@ -75,28 +91,14 @@ export default function Home() {
                         </ul>
                     </div>
                 </PieceContainer>
-                <ResponsiveContainer>
-                    <PieceContainer>
-                        <LineChart
-                            width={450}
-                            height={300}
-                            data={data}
-                            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                        >
-                            <Line
-                                type='monotone'
-                                dataKey='pv'
-                                stroke='#8884d8'
-                                activeDot={{ r: 8 }}
-                            />
-                            <CartesianGrid strokeDasharray='3 3' />
-                            <Tooltip />
-                            <YAxis />
-                            <XAxis dataKey='name' />
-                            <Legend />
-                        </LineChart>
-                    </PieceContainer>
-                </ResponsiveContainer>
+                <LineChart width={600} height={250} data={data}
+                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend verticalAlign="top" align="center" height={36} />
+                    <Line name="Temperatura" type="monotone" dataKey="temperatura" stroke="#8884d8" align="center" />
+                </LineChart>
             </ContainerRight>
         </Container>
     );
