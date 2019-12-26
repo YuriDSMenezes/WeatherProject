@@ -24,15 +24,7 @@ import { parse } from "uri-js";
 import { log } from "util";
 
 
-const data = [
-    { name: 'Segunda', temperatura: 25 },
-    { name: 'Terça', temperatura: 22 },
-    { name: 'Quarta', temperatura: 18 },
-    { name: 'Quinta', temperatura: 23 },
-    { name: 'Sexta', temperatura: 19 },
-    { name: 'Sabado', temperatura: 28 },
-    { name: 'Domingo', temperatura: 20 },
-];
+
 
 export default function Home() {
 
@@ -42,11 +34,31 @@ export default function Home() {
     useEffect(() => {
         async function callApi() {
             const API_KEY = '0ccad757b8948d21b05011856bae6950'
-            const response = await api.get(`/weather?q=Brasília,br&appid=${API_KEY}`)
-            setDates([...dates, response.data])
+            const api_call = await api.get(`/weather?q=Brasília,br&appid=${API_KEY}`)
+            const response = api_call.data
+            setDates({
+                city:response.name,
+                temp: response.main.temp,
+                tempMax: response.main.temp_max,
+                tempMin: response.main.temp_min,
+                humidity: response.main.humidity,
+                clouds: response.clouds.all
+            })
+            console.log(response)
         }
         callApi()
     }, [])
+
+    const data = [
+    { name: 'Segunda', temperatura: dates.temp },
+    { name: 'Terça', temperatura: dates.temp },
+    { name: 'Quarta', temperatura: dates.temp },
+    { name: 'Quinta', temperatura: dates.temp },
+    { name: 'Sexta', temperatura: dates.temp },
+    { name: 'Sabado', temperatura: dates.temp },
+    { name: 'Domingo', temperatura: dates.temp },
+];
+
 
     return (
         <Container>
@@ -57,7 +69,7 @@ export default function Home() {
                 </Header>
                 <Content>
                     <h1>
-                        <span>14º</span>Graus Celsos Portiolio
+                        <span>{dates.temp}</span>Graus Celsos Portiolio
                     </h1>
                     <div>05:28 - Friday , 12 December 2019</div>
                 </Content>
@@ -66,7 +78,7 @@ export default function Home() {
                 <PieceContainer>
                     <div>
                         <h3>City</h3>
-                        <p>{dates.name}</p>
+                        <p>{dates.city}</p>
                         <button type='button'>Change</button>
                     </div>
                 </PieceContainer>
@@ -76,16 +88,16 @@ export default function Home() {
                     </div>
                     <div>
                         <ul>
-                            <li>Wheather </li>
+                            <li>Temp Max </li>
+                            <li>Temp Min</li>
                             <li>Cloudy</li>
-                            <li>Precipitation</li>
                             <li>Humidity</li>
                         </ul>
                         <ul>
-                            <li>90%</li>
-                            <li>90%</li>
-                            <li>90%</li>
-                            <li>90%</li>
+                            <li>{dates.tempMax}%</li>
+                            <li>{dates.tempMin}%</li>
+                            <li>{dates.clouds}%</li>
+                            <li>{dates.humidity}%</li>
                         </ul>
                     </div>
                 </PieceContainer>
