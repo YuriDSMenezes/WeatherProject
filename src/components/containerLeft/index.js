@@ -25,7 +25,7 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity }) {
             </Header>
             <Content>
                 <h1>
-                    <span>{dates.temp}º</span>Graus Celsos Portiolio
+                    <span>{dates.temp}º</span>Graus Celsius
                     </h1>
                 <div>05:28 - Friday , 12 December 2019</div>
             </Content>
