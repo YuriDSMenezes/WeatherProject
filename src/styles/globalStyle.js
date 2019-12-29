@@ -7,6 +7,15 @@ export default createGlobalStyle`
   margin:0;
   padding:0;
   box-sizing:border-box
+  textarea:focus,
+    input:focus,
+    select:focus,
+    button:focus {
+    border-color: none !important;
+    outline: 0;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+
 }
 
 html, body , #root {
@@ -19,4 +28,5 @@ body {
   font: 16px 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased !important
 }
-`;
+`
+    ;

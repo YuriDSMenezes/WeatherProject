@@ -38,13 +38,13 @@ export default function Home() {
         return cell;
     }
 
-    
-    
-    
+
+
+
     function handleAddCity() {
         setNewCity(city)
     }
-    
+
     useEffect(() => {
         async function callApi() {
             const API_KEY = '0ccad757b8948d21b05011856bae6950'
@@ -77,10 +77,14 @@ export default function Home() {
             <ContainerLeft>
                 <Header>
                     <div>Weather Project</div>
-                    <input value={city} onChange={e => setCity(e.target.value)} />
-                    <MdMenu size={40} />
+                    <div>
+                        <input value={city} onChange={e => setCity(e.target.value)} placeholder="Type city name" />
+                        <button type='button' onClick={handleAddCity}>Change</button>
+                    </div>
+                    <div>
+                        <MdMenu size={40} />
+                    </div>
                 </Header>
-                    <button type='button' onClick={handleAddCity}>Change</button>
                 <Content>
                     <h1>
                         <span>{dates.temp}º</span>Graus Celsos Portiolio

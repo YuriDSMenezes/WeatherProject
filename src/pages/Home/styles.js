@@ -29,6 +29,10 @@ export const ContainerLeft = styled.div`
         align-self: center;
     }
 
+    button:hover {
+        background: #444040
+    }
+
 `;
 
 export const Header = styled.header`
@@ -36,6 +40,24 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding:20px;
+
+  input {
+      border: none;
+      height:37px;
+      background: #1e1d1e;
+      border: 1px solid #7d7d7d;
+      text-align: center;
+  }
+
+  input::placeholder {
+      color:#fff;
+      text-align: center;
+      font-family: 'Roboto';
+  }
+
+  input:focus {
+      color:#fff;
+  }
 `;
 
 export const Content = styled.div`
