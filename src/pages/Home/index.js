@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import api from '../../services/api'
 import 'weather-icons/css/weather-icons.css'
 
+import ContainerLeft from '../../components/containerLeft'
+
 import {
     LineChart,
     Line,
@@ -13,21 +15,11 @@ import {
 
 import {
     Container,
-    ContainerLeft,
     ContainerRight,
     Header,
     Content,
     PieceContainer,
 } from "./styles";
-
-
-import { MdMenu } from 'react-icons/md'
-import { stringify } from "querystring";
-import { parse } from "uri-js";
-import { log } from "util";
-
-
-
 
 export default function Home() {
 
@@ -39,17 +31,6 @@ export default function Home() {
         const cell = Math.floor(temp - 273.15)
 
         return cell;
-    }
-
-
-
-
-    function handleAddCity() {
-        if (city === '') {
-            return setNewCity("Brasília")
-        }
-
-        return setNewCity(city)
     }
 
     useEffect(() => {
@@ -81,24 +62,7 @@ export default function Home() {
 
     return (
         <Container>
-            <ContainerLeft>
-                <Header>
-                    <div>Weather Project</div>
-                    <div>
-                        <input value={city} onChange={e => setCity(e.target.value)} placeholder="Type city name" />
-                        <button type='button' onClick={handleAddCity}>Change</button>
-                    </div>
-                    <div>
-                        <MdMenu size={40} />
-                    </div>
-                </Header>
-                <Content>
-                    <h1>
-                        <span>{dates.temp}º</span>Graus Celsos Portiolio
-                    </h1>
-                    <div>05:28 - Friday , 12 December 2019</div>
-                </Content>
-            </ContainerLeft>
+            <ContainerLeft setNewCity={setNewCity} city={city} dates={dates} setCity={setCity} />
             <ContainerRight>
                 <PieceContainer>
                     <div>
