@@ -29,7 +29,8 @@ import { log } from "util";
 export default function Home() {
 
     const [dates, setDates] = useState([])
-
+    const [city, setCity] = useState()
+    const [newCity, setNewCity] = useState("Brasília")
 
     function convertCelsius(temp) {
         const cell = Math.floor(temp - 273.15)
@@ -37,42 +38,49 @@ export default function Home() {
         return cell;
     }
 
+    
+    
+    
+    function handleAddCity() {
+        setNewCity(city)
+    }
+    
     useEffect(() => {
         async function callApi() {
             const API_KEY = '0ccad757b8948d21b05011856bae6950'
-            const api_call = await api.get(`/weather?q=Brasília,br&appid=${API_KEY}`)
+            const api_call = await api.get(`/weather?q=${newCity},br&appid=${API_KEY}`)
             const response = api_call.data
             setDates({
-                city:response.name,
+                city: response.name,
                 temp: convertCelsius(response.main.temp),
                 tempMax: convertCelsius(response.main.temp_max),
                 tempMin: convertCelsius(response.main.temp_min),
                 humidity: response.main.humidity,
                 clouds: response.clouds.all
             })
-            console.log(response)
         }
         callApi()
-    }, [])
+    }, [newCity])
 
     const data = [
-    { name: 'Segunda', temperatura: dates.temp },
-    { name: 'Terça', temperatura: dates.temp },
-    { name: 'Quarta', temperatura: dates.temp },
-    { name: 'Quinta', temperatura: dates.temp },
-    { name: 'Sexta', temperatura: dates.temp },
-    { name: 'Sabado', temperatura: dates.temp },
-    { name: 'Domingo', temperatura: dates.temp },
-];
-
+        { name: 'Segunda', temperatura: dates.temp },
+        { name: 'Terça', temperatura: dates.temp },
+        { name: 'Quarta', temperatura: dates.temp },
+        { name: 'Quinta', temperatura: dates.temp },
+        { name: 'Sexta', temperatura: dates.temp },
+        { name: 'Sabado', temperatura: dates.temp },
+        { name: 'Domingo', temperatura: dates.temp },
+    ];
 
     return (
         <Container>
             <ContainerLeft>
                 <Header>
                     <div>Weather Project</div>
+                    <input value={city} onChange={e => setCity(e.target.value)} />
                     <MdMenu size={40} />
                 </Header>
+                    <button type='button' onClick={handleAddCity}>Change</button>
                 <Content>
                     <h1>
                         <span>{dates.temp}º</span>Graus Celsos Portiolio
@@ -85,7 +93,6 @@ export default function Home() {
                     <div>
                         <h3>City</h3>
                         <p>{dates.city}</p>
-                        <button type='button'>Change</button>
                     </div>
                 </PieceContainer>
                 <PieceContainer>

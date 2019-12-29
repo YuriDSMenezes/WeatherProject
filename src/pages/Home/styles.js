@@ -17,6 +17,18 @@ export const ContainerLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  button{
+        width: 100px;
+        padding: 10px;
+        color: #fff;
+        background: #1e1d1e;
+        border: 1px solid #7d7d7d;
+        font-weight: bold;
+        letter-spacing: 1px;
+        align-self: center;
+    }
+
 `;
 
 export const Header = styled.header`
@@ -66,16 +78,6 @@ padding: 20px;
 &:nth-child(1)
  {
     line-height:40px;
-
-    button{
-        width: 100px;
-        padding: 10px;
-        color: #fff;
-        background: #1e1d1e;
-        border: 1px solid #7d7d7d;
-        font-weight: bold;
-        letter-spacing: 1px;
-    }
  }
  div {
     display:flex;
