@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from '../../services/api'
+import 'weather-icons/css/weather-icons.css'
+
 import {
     LineChart,
     Line,
@@ -17,6 +19,7 @@ import {
     Content,
     PieceContainer,
 } from "./styles";
+
 
 import { MdMenu } from 'react-icons/md'
 import { stringify } from "querystring";
@@ -42,7 +45,11 @@ export default function Home() {
 
 
     function handleAddCity() {
-        setNewCity(city)
+        if (city === '') {
+            return setNewCity("Brasília")
+        }
+
+        return setNewCity(city)
     }
 
     useEffect(() => {
@@ -95,7 +102,7 @@ export default function Home() {
             <ContainerRight>
                 <PieceContainer>
                     <div>
-                        <h3>City</h3>
+                        <h3>City <i className="wi wi-train"></i> </h3>
                         <p>{dates.city}</p>
                     </div>
                 </PieceContainer>
@@ -105,10 +112,10 @@ export default function Home() {
                     </div>
                     <div>
                         <ul>
-                            <li>Temp Max </li>
-                            <li>Temp Min</li>
-                            <li>Cloudy</li>
-                            <li>Humidity</li>
+                            <li>Temp Max  <i className="wi wi-direction-up"></i> </li>
+                            <li>Temp Min  <i className="wi wi-direction-down"></i> </li>
+                            <li>Cloudy  <i className="wi wi-cloud"></i></li>
+                            <li>Humidity  <i className="wi wi-humidity"></i></li>
                         </ul>
                         <ul>
                             <li>{dates.tempMax}º</li>
@@ -118,14 +125,16 @@ export default function Home() {
                         </ul>
                     </div>
                 </PieceContainer>
-                <LineChart width={600} height={250} data={data}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend verticalAlign="top" align="center" height={36} />
-                    <Line name="Temperatura" type="monotone" dataKey="temperatura" stroke="#8884d8" align="center" />
-                </LineChart>
+                <PieceContainer>
+                    <LineChart width={550} height={250} data={data}
+                        margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend verticalAlign="top" height={36} />
+                        <Line name="Temperatura" type="monotone" dataKey="temperatura" stroke="#8884d8" align="center" />
+                    </LineChart>
+                </PieceContainer>
             </ContainerRight>
         </Container>
     );

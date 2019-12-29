@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   display: grid;
-  grid-template-columns: 1fr 600px;
+  grid-template-columns: 1fr 620px;
   grid-template-areas: "containerLeft containerRight";
   background: #1e1d1e;
   margin: 20px;
@@ -17,6 +17,7 @@ export const ContainerLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: 20px;
 
   button{
         width: 100px;
@@ -47,16 +48,12 @@ export const Header = styled.header`
       background: #1e1d1e;
       border: 1px solid #7d7d7d;
       text-align: center;
+      color:#fff;
   }
 
   input::placeholder {
       color:#fff;
       text-align: center;
-      font-family: 'Roboto';
-  }
-
-  input:focus {
-      color:#fff;
   }
 `;
 
@@ -129,8 +126,5 @@ padding: 20px;
           margin-top: 20px;
       }
   }
-
- 
-
 
 `

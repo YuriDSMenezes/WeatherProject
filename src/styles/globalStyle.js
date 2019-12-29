@@ -15,11 +15,6 @@ export default createGlobalStyle`
     outline: 0;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-
-}
-
-html, body , #root {
-  height: 100vh;
 }
 
 body {
@@ -28,5 +23,4 @@ body {
   font: 16px 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased !important
 }
-`
-    ;
+`;
