@@ -31,6 +31,12 @@ export default function Home() {
     const [dates, setDates] = useState([])
 
 
+    function convertCelsius(temp) {
+        const cell = Math.floor(temp - 273.15)
+
+        return cell;
+    }
+
     useEffect(() => {
         async function callApi() {
             const API_KEY = '0ccad757b8948d21b05011856bae6950'
@@ -38,9 +44,9 @@ export default function Home() {
             const response = api_call.data
             setDates({
                 city:response.name,
-                temp: response.main.temp,
-                tempMax: response.main.temp_max,
-                tempMin: response.main.temp_min,
+                temp: convertCelsius(response.main.temp),
+                tempMax: convertCelsius(response.main.temp_max),
+                tempMin: convertCelsius(response.main.temp_min),
                 humidity: response.main.humidity,
                 clouds: response.clouds.all
             })
@@ -69,7 +75,7 @@ export default function Home() {
                 </Header>
                 <Content>
                     <h1>
-                        <span>{dates.temp}</span>Graus Celsos Portiolio
+                        <span>{dates.temp}º</span>Graus Celsos Portiolio
                     </h1>
                     <div>05:28 - Friday , 12 December 2019</div>
                 </Content>
@@ -94,8 +100,8 @@ export default function Home() {
                             <li>Humidity</li>
                         </ul>
                         <ul>
-                            <li>{dates.tempMax}%</li>
-                            <li>{dates.tempMin}%</li>
+                            <li>{dates.tempMax}º</li>
+                            <li>{dates.tempMin}º</li>
                             <li>{dates.clouds}%</li>
                             <li>{dates.humidity}%</li>
                         </ul>
