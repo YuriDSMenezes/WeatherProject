@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { MdHome, MdArrowUpward,MdArrowDownward,MdCloud } from 'react-icons/md'
+import {WiHumidity} from 'react-icons/wi'
+
 import {PieceContainer} from './styles'
 
 export default function RightContent({dates}) {
@@ -7,7 +10,7 @@ export default function RightContent({dates}) {
         <>
             <PieceContainer>
                 <div>
-                    <h3>City <i className="wi wi-train"></i> </h3>
+                    <h3>City <MdHome /> </h3>
                     <p>{dates.city}</p>
                 </div>
             </PieceContainer>
@@ -17,10 +20,10 @@ export default function RightContent({dates}) {
                 </div>
                 <div>
                     <ul>
-                        <li>Temp Max  <i className="wi wi-direction-up"></i> </li>
-                        <li>Temp Min  <i className="wi wi-direction-down"></i> </li>
-                        <li>Cloudy  <i className="wi wi-cloud"></i></li>
-                        <li>Humidity  <i className="wi wi-humidity"></i></li>
+                        <li>Temp Max  <MdArrowUpward /> </li>
+                        <li>Temp Min  <MdArrowDownward /> </li>
+                        <li>Cloudy  <MdCloud /> </li>
+                        <li>Humidity  <WiHumidity /></li>
                     </ul>
                     <ul>
                         <li>{dates.tempMax}º</li>

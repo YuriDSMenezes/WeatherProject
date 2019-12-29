@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import api from '../../services/api'
-import 'weather-icons/css/weather-icons.css'
 
 import ContainerLeft from '../../components/containerLeft'
 import RightContent from '../../components/containerRigth'
