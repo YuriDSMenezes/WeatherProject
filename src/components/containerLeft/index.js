@@ -1,21 +1,16 @@
 import React from 'react';
-
-
-
-import {Container,Header,Content,} from './styles'
-
+import { Container, Header, Content, } from './styles'
 import { MdMenu } from 'react-icons/md'
 
-export default function ContainerLeft({city,setCity,dates, setNewCity}) {
 
-     function handleAddCity() {
+export default function ContainerLeft({ city, setCity, dates, setNewCity }) {
+    function handleAddCity() {
         if (city === '') {
             return setNewCity("Brasília")
         }
-
         return setNewCity(city)
     }
-
+    
     return (
         <Container>
             <Header>

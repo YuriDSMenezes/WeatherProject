@@ -3,21 +3,13 @@ import api from '../../services/api'
 import 'weather-icons/css/weather-icons.css'
 
 import ContainerLeft from '../../components/containerLeft'
+import RightContent from '../../components/containerRigth'
+import Graphic from '../../components/Graphic'
 
-import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    Tooltip,
-    Legend,
-} from 'recharts'
 
 import {
     Container,
     ContainerRight,
-    Header,
-    Content,
     PieceContainer,
 } from "./styles";
 
@@ -29,7 +21,6 @@ export default function Home() {
 
     function convertCelsius(temp) {
         const cell = Math.floor(temp - 273.15)
-
         return cell;
     }
 
@@ -50,54 +41,13 @@ export default function Home() {
         callApi()
     }, [newCity])
 
-    const data = [
-        { name: 'Segunda', temperatura: dates.temp },
-        { name: 'Terça', temperatura: dates.temp },
-        { name: 'Quarta', temperatura: dates.temp },
-        { name: 'Quinta', temperatura: dates.temp },
-        { name: 'Sexta', temperatura: dates.temp },
-        { name: 'Sabado', temperatura: dates.temp },
-        { name: 'Domingo', temperatura: dates.temp },
-    ];
-
     return (
         <Container>
             <ContainerLeft setNewCity={setNewCity} city={city} dates={dates} setCity={setCity} />
             <ContainerRight>
+                <RightContent dates={dates} />
                 <PieceContainer>
-                    <div>
-                        <h3>City <i className="wi wi-train"></i> </h3>
-                        <p>{dates.city}</p>
-                    </div>
-                </PieceContainer>
-                <PieceContainer>
-                    <div>
-                        <p>Wheather Details</p>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>Temp Max  <i className="wi wi-direction-up"></i> </li>
-                            <li>Temp Min  <i className="wi wi-direction-down"></i> </li>
-                            <li>Cloudy  <i className="wi wi-cloud"></i></li>
-                            <li>Humidity  <i className="wi wi-humidity"></i></li>
-                        </ul>
-                        <ul>
-                            <li>{dates.tempMax}º</li>
-                            <li>{dates.tempMin}º</li>
-                            <li>{dates.clouds}%</li>
-                            <li>{dates.humidity}%</li>
-                        </ul>
-                    </div>
-                </PieceContainer>
-                <PieceContainer>
-                    <LineChart width={550} height={250} data={data}
-                        margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend verticalAlign="top" height={36} />
-                        <Line name="Temperatura" type="monotone" dataKey="temperatura" stroke="#8884d8" align="center" />
-                    </LineChart>
+                    <Graphic dates={dates} />
                 </PieceContainer>
             </ContainerRight>
         </Container>
