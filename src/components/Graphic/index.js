@@ -10,7 +10,7 @@ import {
 
 
 
-export default function Graphic({ dates }) {
+export default function Graphic({dates}) {
     const data = [
         { name: 'Segunda', temperatura: dates.temp },
         { name: 'Terça', temperatura: dates.temp },

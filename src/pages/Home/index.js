@@ -3,8 +3,6 @@ import api from '../../services/api'
 
 import ContainerLeft from '../../components/containerLeft'
 import RightContent from '../../components/containerRigth'
-import Graphic from '../../components/Graphic'
-
 
 import {
     Container,
@@ -45,9 +43,6 @@ export default function Home() {
             <ContainerLeft setNewCity={setNewCity} city={city} dates={dates} setCity={setCity} />
             <ContainerRight>
                 <RightContent dates={dates} />
-                <PieceContainer>
-                    <Graphic dates={dates} />
-                </PieceContainer>
             </ContainerRight>
         </Container>
     );

@@ -1,11 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { MdHome, MdArrowUpward, MdArrowDownward, MdCloud } from 'react-icons/md'
+import { WiHumidity } from 'react-icons/wi'
 
-import { MdHome, MdArrowUpward,MdArrowDownward,MdCloud } from 'react-icons/md'
-import {WiHumidity} from 'react-icons/wi'
+import Graphic from '../Graphic'
 
-import {PieceContainer} from './styles'
+import { PieceContainer } from './styles'
 
-export default function RightContent({dates}) {
+export default function RightContent({ dates, dispatch }) {
+
     return (
         <>
             <PieceContainer>
@@ -32,6 +35,9 @@ export default function RightContent({dates}) {
                         <li>{dates.humidity}%</li>
                     </ul>
                 </div>
+            </PieceContainer>
+            <PieceContainer>
+                <Graphic dates={dates}/>
             </PieceContainer>
         </>
     )
