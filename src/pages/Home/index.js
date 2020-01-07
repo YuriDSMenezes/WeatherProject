@@ -26,17 +26,22 @@ export default function Home() {
             const API_KEY = '0ccad757b8948d21b05011856bae6950'
             const api_call = await api.get(`/weather?q=${newCity},br&appid=${API_KEY}`)
             const response = api_call.data
+            const description = response.weather.map(d => d.main)
             setDates({
                 city: response.name,
                 temp: convertCelsius(response.main.temp),
                 tempMax: convertCelsius(response.main.temp_max),
                 tempMin: convertCelsius(response.main.temp_min),
                 humidity: response.main.humidity,
-                clouds: response.clouds.all
+                clouds: response.clouds.all,
+                main: description
             })
         }
         callApi()
-    }, [newCity])
+    }, [newCity] )
+
+
+    console.log(dates.main)
 
     return (
         <Container>

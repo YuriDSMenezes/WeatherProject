@@ -1,11 +1,21 @@
 import React from 'react';
-import { Container, Header, Content, } from './styles'
+import {useState} from 'react'
+import { Container, Header, Content, Rain } from './styles'
 import { MdMenu } from 'react-icons/md'
 import { getDate } from 'date-fns/esm';
 import {hour, minutes, dayWeek, day, year, month} from '../../util/formatedData'
 
 
 export default function ContainerLeft({ city, setCity, dates, setNewCity }) {
+
+    const [weather, setWeather] = useState();
+
+    const newWeather = dates.main;
+
+    if(newWeather === "Clouds") {
+        return console.log("ok")
+    }
+
     function handleAddCity() {
         if (city === '') {
             return setNewCity("Brasília")
@@ -14,7 +24,7 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity }) {
     }
 
     return (
-        <Container>
+        <Container dates={dates.main} >
             <Header>
                 <div>Weather Project</div>
                 <div>
