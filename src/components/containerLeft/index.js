@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Header, Content, } from './styles'
 import { MdMenu } from 'react-icons/md'
+import { getDate } from 'date-fns/esm';
+import {hour, minutes, dayWeek, day, year, month} from '../../util/formatedData'
 
 
 export default function ContainerLeft({ city, setCity, dates, setNewCity }) {
@@ -10,7 +12,7 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity }) {
         }
         return setNewCity(city)
     }
-    
+
     return (
         <Container>
             <Header>
@@ -27,7 +29,7 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity }) {
                 <h1>
                     <span>{dates.temp}º</span>Graus Celsius
                     </h1>
-                <div>05:28 - Friday , 12 December 2019</div>
+                <div>{hour}:{minutes} - {dayWeek} , {day} de {month} de {year}</div>
             </Content>
         </Container>
     )
