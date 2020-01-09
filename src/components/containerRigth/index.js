@@ -7,7 +7,7 @@ import Graphic from '../Graphic'
 
 import { PieceContainer } from './styles'
 
-export default function RightContent({ dates, dispatch }) {
+export default function RightContent({ dates, }) {
 
     return (
         <>

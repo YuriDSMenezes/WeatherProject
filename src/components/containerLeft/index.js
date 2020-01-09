@@ -1,34 +1,46 @@
-import React from 'react';
-import {useState} from 'react'
-import { Container, Header, Content, Rain } from './styles'
+import React, { useState } from 'react';
+
+import { Container, Header, Content } from './styles'
+
 import { MdMenu } from 'react-icons/md'
-import { getDate } from 'date-fns/esm';
-import {hour, minutes, dayWeek, day, year, month} from '../../util/formatedData'
+
+import { hour, minutes, dayWeek, day, year, month } from '../../util/formatedData'
+
+import cloud from '../../assets/clouds.webp'
+import rain from '../../assets/rain.gif'
+import sunnyDay from '../../assets/day.gif'
 
 
-export default function ContainerLeft({ city, setCity, dates, setNewCity }) {
+export default function ContainerLeft({ city, setCity, dates, setNewCity, weather }) {
 
-    const [weather, setWeather] = useState();
-
-    const newWeather = dates.main;
-
-    if(newWeather === "Clouds") {
-        return console.log("ok")
-    }
+    const [image, setImage] = useState()
 
     function handleAddCity() {
         if (city === '') {
             return setNewCity("Brasília")
         }
+        if (weather == "Rain") {
+            setImage([rain, ""])
+        }
+
+        if(weather == "Clouds") {
+            setImage([cloud, ""])
+        }
+        if(weather == "Clear") {
+            setImage([sunnyDay, ""])
+
+        }
+        console.log(weather)
         return setNewCity(city)
     }
 
+
     return (
-        <Container dates={dates.main} >
+        <Container bgImg={image} >
             <Header>
                 <div>Weather Project</div>
                 <div>
-                    <input value={city} onChange={e => setCity(e.target.value)} placeholder="Type city name" />
+                    <input type="text"  value={city} onChange={e => setCity(e.target.value)} placeholder="Type city name" />
                     <button type='button' onClick={handleAddCity}>Change</button>
                 </div>
                 <div>

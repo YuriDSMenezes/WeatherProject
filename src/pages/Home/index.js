@@ -13,7 +13,7 @@ import {
 export default function Home() {
 
     const [dates, setDates] = useState([])
-    const [city, setCity] = useState()
+    const [city, setCity] = useState('Brasília')
     const [newCity, setNewCity] = useState("Brasília")
 
     function convertCelsius(temp) {
@@ -39,13 +39,10 @@ export default function Home() {
         }
         callApi()
     }, [newCity] )
-
-
-    console.log(dates.main)
-
+    
     return (
         <Container>
-            <ContainerLeft setNewCity={setNewCity} city={city} dates={dates} setCity={setCity} />
+            <ContainerLeft setNewCity={setNewCity} city={city} dates={dates} setCity={setCity} weather={dates.main} />
             <ContainerRight>
                 <RightContent dates={dates} />
             </ContainerRight>

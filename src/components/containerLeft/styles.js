@@ -3,7 +3,7 @@ import rain from '../../assets/rain.gif'
 
 
 export const Container = styled.div`
-  background-image: url(${rain});
+  background-image: url(${({ bgImg }) => bgImg});
   background-size:cover;
   grid-area: containerLeft;
   display: flex;
@@ -18,7 +18,7 @@ export const Container = styled.div`
         font-weight: bold;
         letter-spacing: 1px;
         align-self: center;
-        border:none;
+        border:1px solid #999;
         height: 37px;
         margin-left:5px;
     }
@@ -36,7 +36,7 @@ export const Header = styled.header`
   padding:20px;
 
   input {
-      border: none;
+      border:1px solid #999;
       height:37px;
       background: #1e1d1e;
       text-align: center;
@@ -76,8 +76,3 @@ export const Content = styled.div`
     }
   }
 `;
-
-export const Rain = styled.div `
- background-image: url(${rain});
-  background-size:cover;
-`
