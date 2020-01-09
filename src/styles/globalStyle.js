@@ -22,5 +22,6 @@ body {
   color: #fff;
   font: 16px 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased !important
+  margin-top: 60px;
 }
 `;

@@ -9,6 +9,7 @@ import { hour, minutes, dayWeek, day, year, month } from '../../util/formatedDat
 import cloud from '../../assets/clouds.webp'
 import rain from '../../assets/rain.gif'
 import sunnyDay from '../../assets/day.gif'
+import storm from '../../assets/storm.gif'
 
 
 export default function ContainerLeft({ city, setCity, dates, setNewCity, weather }) {
@@ -22,15 +23,16 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity, weathe
         if (weather == "Rain") {
             setImage([rain, ""])
         }
-
-        if(weather == "Clouds") {
+        if (weather == "Clouds") {
             setImage([cloud, ""])
         }
-        if(weather == "Clear") {
+        if (weather == "Clear") {
             setImage([sunnyDay, ""])
-
         }
-        console.log(weather)
+        if (weather == "Thunderstorm") {
+            setImage([storm, ""])
+        }
+
         return setNewCity(city)
     }
 
@@ -40,7 +42,7 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity, weathe
             <Header>
                 <div>Weather Project</div>
                 <div>
-                    <input type="text"  value={city} onChange={e => setCity(e.target.value)} placeholder="Type city name" />
+                    <input type="text" value={city} onChange={e => setCity(e.target.value)} placeholder="Type city name" />
                     <button type='button' onClick={handleAddCity}>Change</button>
                 </div>
                 <div>

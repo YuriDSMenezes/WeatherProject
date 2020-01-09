@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import api from '../../services/api'
 
+import { SolarSystemLoading } from 'react-loadingg'
+
 import ContainerLeft from '../../components/containerLeft'
 import RightContent from '../../components/containerRigth'
 
@@ -15,6 +17,7 @@ export default function Home() {
     const [dates, setDates] = useState([])
     const [city, setCity] = useState('Brasília')
     const [newCity, setNewCity] = useState("Brasília")
+    const [loading, setLoading] = useState(true);
 
     function convertCelsius(temp) {
         const cell = Math.floor(temp - 273.15)
@@ -23,6 +26,7 @@ export default function Home() {
 
     useEffect(() => {
         async function callApi() {
+            setLoading(true)
             const API_KEY = '0ccad757b8948d21b05011856bae6950'
             const api_call = await api.get(`/weather?q=${newCity},br&appid=${API_KEY}`)
             const response = api_call.data
@@ -38,14 +42,19 @@ export default function Home() {
             })
         }
         callApi()
-    }, [newCity] )
-    
+        setLoading(false)
+    }, [newCity])
+
     return (
         <Container>
-            <ContainerLeft setNewCity={setNewCity} city={city} dates={dates} setCity={setCity} weather={dates.main} />
-            <ContainerRight>
-                <RightContent dates={dates} />
-            </ContainerRight>
+            {loading ? <SolarSystemLoading />  : (
+                <>
+                    <ContainerLeft setNewCity={setNewCity} city={city} dates={dates} setCity={setCity} weather={dates.main} />
+                    <ContainerRight>
+                        <RightContent dates={dates} />
+                    </ContainerRight>
+                </>
+            )}
         </Container>
     );
 }

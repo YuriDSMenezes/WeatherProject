@@ -7,7 +7,6 @@ export const Container = styled.main`
   background: #1e1d1e;
   margin: 20px;
   border-radius: 5px;
-  min-height: 800px;
 `;
 export const ContainerRight = styled.div`
   grid-area: containerRight;

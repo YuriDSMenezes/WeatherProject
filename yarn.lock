@@ -8173,6 +8173,13 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-loadingg@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/react-loadingg/-/react-loadingg-1.6.2.tgz#976912b433565bb0280abb9c4b56fd63b45d753e"
+  integrity sha512-IBJprJ3WW7vnE0rL50sj6ebvWJ0gJ01brdIWTVh3UALOx027dBZnRS0u5ZxQbn2PpeXNt1/E6YIs0/8NyYIZ9w==
+  dependencies:
+    styled-components "^4.3.2"
+
 react-open-weather@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-open-weather/-/react-open-weather-0.5.2.tgz#1d687495b19ad8899bad3b63a6b48f59611b6a3e"
@@ -9405,7 +9412,7 @@ style-loader@0.23.1:
     loader-utils "^1.1.0"
     schema-utils "^1.0.0"
 
-styled-components@4.4.1:
+styled-components@4.4.1, styled-components@^4.3.2:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.4.1.tgz#e0631e889f01db67df4de576fedaca463f05c2f2"
   integrity sha512-RNqj14kYzw++6Sr38n7197xG33ipEOktGElty4I70IKzQF1jzaD1U4xQ+Ny/i03UUhHlC5NWEO+d8olRCDji6g==
