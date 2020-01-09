@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 import api from '../../services/api'
 
-import { SolarSystemLoading } from 'react-loadingg'
 
 import ContainerLeft from '../../components/containerLeft'
 import RightContent from '../../components/containerRigth'
+import { Container, ContainerRight, PieceContainer, } from "./styles";
 
-import {
-    Container,
-    ContainerRight,
-    PieceContainer,
-} from "./styles";
+import { SolarSystemLoading } from 'react-loadingg'
 
 export default function Home() {
-
     const [dates, setDates] = useState([])
     const [city, setCity] = useState('Brasília')
     const [newCity, setNewCity] = useState("Brasília")
@@ -42,12 +37,16 @@ export default function Home() {
             })
         }
         callApi()
-        setLoading(false)
+
+        setTimeout(() => {
+            setTimeout(setLoading(false))
+        }, 1000);
+
     }, [newCity])
 
     return (
         <Container>
-            {loading ? <SolarSystemLoading />  : (
+            {loading ? <SolarSystemLoading /> : (
                 <>
                     <ContainerLeft setNewCity={setNewCity} city={city} dates={dates} setCity={setCity} weather={dates.main} />
                     <ContainerRight>
