@@ -8,7 +8,3 @@ export const Container = styled.main`
   margin: 20px;
   border-radius: 10px;
 `;
-export const ContainerRight = styled.div`
-  grid-area: containerRight;
-  border-left: 1px solid #7d7d7d;
-`;

@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const ContentRight = styled.div`
+  grid-area: containerRight;
+  border-left: 1px solid #7d7d7d;
+`
+
 export const PieceContainer = styled.div` 
 padding: 20px;
 &:nth-child(1)

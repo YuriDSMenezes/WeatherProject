@@ -1,4 +1,4 @@
-export default function date(state = [], action) {
+export default function dates (state = [], action) {
     console.log(state)
     switch (action.type) {
         case 'Share_Date':

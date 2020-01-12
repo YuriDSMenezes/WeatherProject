@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import api from '../../services/api'
 
+
 import ContainerLeft from '../../components/containerLeft'
-import RightContent from '../../components/containerRigth'
-import { Container, ContainerRight } from "./styles";
+import ContainerRight from '../../components/containerRight'
+
+import { Container, PieceContainer, } from "./styles";
 
 import { SolarSystemLoading } from 'react-loadingg'
 
@@ -48,9 +50,7 @@ export default function Home() {
             {loading ? <SolarSystemLoading /> : (
                 <>
                     <ContainerLeft setNewCity={setNewCity} newCity={newCity} city={city} dates={dates} setCity={setCity} weather={dates.main} />
-                    <ContainerRight>
-                        <RightContent dates={dates} weather={dates.main} />
-                    </ContainerRight>
+                    <ContainerRight dates={dates} weather={dates.main} />
                 </>
             )}
         </Container>

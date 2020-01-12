@@ -5,12 +5,12 @@ import { WiHumidity } from 'react-icons/wi'
 
 import Graphic from '../Graphic'
 
-import { PieceContainer } from './styles'
+import { PieceContainer, ContentRight } from './styles'
 
 export default function RightContent({ dates, weather}) {
 
     return (
-        <>
+        <ContentRight>
             <PieceContainer>
                 <div>
                     <h3>City <MdHome /> </h3>
@@ -40,6 +40,6 @@ export default function RightContent({ dates, weather}) {
             <PieceContainer>
                 <Graphic dates={dates}/>
             </PieceContainer>
-        </>
+        </ContentRight>
     )
 }
