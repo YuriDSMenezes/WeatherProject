@@ -7,13 +7,14 @@ import Graphic from '../Graphic'
 
 import { PieceContainer } from './styles'
 
-export default function RightContent({ dates, }) {
+export default function RightContent({ dates, weather}) {
 
     return (
         <>
             <PieceContainer>
                 <div>
                     <h3>City <MdHome /> </h3>
+                    <h2>{weather}</h2>
                     <p>{dates.city}</p>
                 </div>
             </PieceContainer>

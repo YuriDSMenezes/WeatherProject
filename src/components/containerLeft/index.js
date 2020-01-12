@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Container, Header, Content } from './styles'
 
@@ -12,29 +12,31 @@ import sunnyDay from '../../assets/day.gif'
 import storm from '../../assets/storm.gif'
 
 
-export default function ContainerLeft({ city, setCity, dates, setNewCity, weather }) {
+export default function ContainerLeft({ city, setCity, dates, setNewCity, newCity, weather }) {
 
     const [image, setImage] = useState()
 
     function handleAddCity() {
-        if (city === '') {
+        if (newCity === '') {
             return setNewCity("Brasília")
         }
-        if (weather == "Rain") {
-            setImage([rain, ""])
-        }
-        if (weather == "Clouds") {
-            setImage([cloud, ""])
-        }
-        if (weather == "Clear") {
-            setImage([sunnyDay, ""])
-        }
-        if (weather == "Thunderstorm") {
-            setImage([storm, ""])
-        }
-
         return setNewCity(city)
     }
+    
+    useEffect(() => {
+        if (weather == "Rain") {
+            setImage([rain])
+        }
+        if (weather == "Clouds") {
+            setImage([cloud])
+        }
+        if (weather == "Clear") {
+            setImage([sunnyDay])
+        }
+        if (weather == "Thunderstorm") {
+            setImage([storm])
+        }
+    }, [newCity])
 
 
     return (

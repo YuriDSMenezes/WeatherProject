@@ -10,21 +10,19 @@ padding: 20px;
     display:flex;
     justify-content: space-between;
     align-itens: center;
+
+    h3 {
+      color: #7d7d7d;
+      height: 40px;
+    }
  }
 
   & + div {
-      margin-top: 30px;
       border-top: 1px solid #7d7d7d;
-
       div:nth-child(1){
-          margin-top: 20px
+        margin-top: 20px
         margin-bottom: 30px;
       }
-  }
-
-  div h3 {
-      color: #7d7d7d;
-      height: 40px;
   }
 
   li {
