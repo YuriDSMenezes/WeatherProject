@@ -25,19 +25,18 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity, newCit
     
     useEffect(() => {
         if (weather == "Rain") {
-            setImage([rain])
+            setImage(rain)
         }
         if (weather == "Clouds") {
-            setImage([cloud])
+            setImage(cloud)
         }
         if (weather == "Clear") {
-            setImage([sunnyDay])
+            setImage(sunnyDay)
         }
         if (weather == "Thunderstorm") {
-            setImage([storm])
+            setImage(storm)
         }
     }, [newCity])
-
 
     return (
         <Container bgImg={image} >

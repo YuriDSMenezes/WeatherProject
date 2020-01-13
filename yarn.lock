@@ -8173,10 +8173,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-loadingg@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/react-loadingg/-/react-loadingg-1.6.2.tgz#976912b433565bb0280abb9c4b56fd63b45d753e"
-  integrity sha512-IBJprJ3WW7vnE0rL50sj6ebvWJ0gJ01brdIWTVh3UALOx027dBZnRS0u5ZxQbn2PpeXNt1/E6YIs0/8NyYIZ9w==
+react-loadingg@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/react-loadingg/-/react-loadingg-1.7.1.tgz#99a8eb3e276245c3ab133817f34ccf8d8da625ef"
+  integrity sha512-6dPdRwt/HY4PXMY6wEssLf32/JZ4Hw46WD93LLHaejyOdi+0IELy6LA4/tuex6G9bmagtvAZERsLTGCTVBO1nA==
   dependencies:
     styled-components "^4.3.2"
 

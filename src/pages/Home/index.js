@@ -5,7 +5,7 @@ import api from '../../services/api'
 import ContainerLeft from '../../components/containerLeft'
 import ContainerRight from '../../components/containerRight'
 
-import { Container, PieceContainer, } from "./styles";
+import { Container} from "./styles";
 
 import { SolarSystemLoading } from 'react-loadingg'
 
