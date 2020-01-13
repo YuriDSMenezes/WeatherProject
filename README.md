@@ -16,4 +16,5 @@ Run yarn to download dependencies and run yarn start to run the project in your 
 ## Preview
 <br />
 
-![20191229_141349](https://user-images.githubusercontent.com/49171033/71560226-cf76c980-2a45-11ea-964a-f5204a220624.gif)
+![image](https://user-images.githubusercontent.com/49171033/72296960-9fc8e380-3639-11ea-86d7-47a6a5442862.png)
+
