@@ -50,6 +50,15 @@ export const Header = styled.header`
   }
 `;
 
+export const ContainerDegrees = styled.div `
+display: flex;
+margin-right: 30px;
+
+ &+svg {
+  margin-left: 20px;
+ }
+`
+
 export const Content = styled.div`
     padding:20px;
 

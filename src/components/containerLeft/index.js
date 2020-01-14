@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Header, Content } from './styles'
+import { Container, Header, Content, ContainerDegrees } from './styles'
 
-import { MdMenu } from 'react-icons/md'
+import { WiCelsius, WiFahrenheit } from "react-icons/wi";
 
 import { hour, minutes, dayWeek, day, year, month } from '../../util/formatedData'
 
@@ -15,6 +15,7 @@ import storm from '../../assets/storm.gif'
 export default function ContainerLeft({ city, setCity, dates, setNewCity, newCity, weather }) {
 
     const [image, setImage] = useState()
+    const [degrees, setDegrees] = useState('Celcius');
 
     function handleAddCity() {
         if (newCity === '') {
@@ -22,7 +23,7 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity, newCit
         }
         return setNewCity(city)
     }
-    
+
     useEffect(() => {
         if (weather == "Rain") {
             setImage(rain)
@@ -38,6 +39,15 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity, newCit
         }
     }, [newCity])
 
+
+
+    function handleCelsius() {
+        setDegrees("Celsius")
+    }
+    function handleFahrenheit() {
+        setDegrees("Fahrenheit")
+    }
+
     return (
         <Container bgImg={image} >
             <Header>
@@ -46,15 +56,18 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity, newCit
                     <input type="text" value={city} onChange={e => setCity(e.target.value)} placeholder="Type city name" />
                     <button type='button' onClick={handleAddCity}>Change</button>
                 </div>
-                <div>
-                    <MdMenu size={40} />
-                </div>
+                <ContainerDegrees>
+                    <WiCelsius size={50} onClick={handleCelsius} />
+                    <WiFahrenheit size={50} onClick={handleFahrenheit} />
+                </ContainerDegrees>
             </Header>
             <Content>
                 <h1>
-                    <span>{dates.temp}º</span>Graus Celsius
-                    </h1>
-                <div>{hour}:{minutes} - {dayWeek} , {day} de {month} de {year}</div>
+                    <span>{
+                        degrees == "Celsius" ? dates.tempCelcius : dates.tempFahrenheit
+                    }º</span>degrees {degrees}
+                </h1>
+                <div>{hour}:{minutes} - {dayWeek} -  {month} {day}th , {year}</div>
             </Content>
         </Container>
     )

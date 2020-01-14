@@ -29,7 +29,8 @@ export default function Home() {
             const description = response.weather.map(d => d.main)
             setDates({
                 city: response.name,
-                temp: convertCelsius(response.main.temp),
+                tempFahrenheit: response.main.temp,
+                tempCelcius: convertCelsius(response.main.temp),
                 tempMax: convertCelsius(response.main.temp_max),
                 tempMin: convertCelsius(response.main.temp_min),
                 humidity: response.main.humidity,
