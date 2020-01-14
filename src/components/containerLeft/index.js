@@ -47,7 +47,7 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity, newCit
     function handleFahrenheit() {
         setDegrees("Fahrenheit")
     }
-
+    console.log(degrees)
     return (
         <Container bgImg={image} >
             <Header>

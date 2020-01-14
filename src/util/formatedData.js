@@ -1,12 +1,11 @@
-export const now = new Date();
+import {format} from 'date-fns'
 
-export const monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-export const dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const now = new Date();
 
-export const hour = now.getHours();
-export const minutes = now.getMinutes()
+export const hour = format(now,'HH');
+export const minutes = format(now,'mm')
 
-export const day = now.getDate();
-export const dayWeek = dayName[now.getDay()]
-export const month = monthName[now.getMonth()]
-export const year = now.getFullYear();
+export const day = format(now,'dd');
+export const dayWeek = format(now,'EEEE')
+export const month = format(now,'MMMM')
+export const year = format(now,'yyyy')
