@@ -10,6 +10,7 @@ import cloud from '../../assets/clouds.webp'
 import rain from '../../assets/rain.gif'
 import sunnyDay from '../../assets/day.gif'
 import storm from '../../assets/storm.gif'
+import mist from '../../assets/mist.gif'
 
 
 export default function ContainerLeft({ city, setCity, dates, setNewCity, newCity, weather }) {
@@ -24,19 +25,16 @@ export default function ContainerLeft({ city, setCity, dates, setNewCity, newCit
         return setNewCity(city)
     }
 
+    const weatherImages = {
+        Rain: rain,
+        Clouds: cloud,
+        Clear:sunnyDay,
+        Thunderstorm:storm,
+        Mist: mist
+    }
+
     useEffect(() => {
-        if (weather == "Rain") {
-            setImage(rain)
-        }
-        if (weather == "Clouds") {
-            setImage(cloud)
-        }
-        if (weather == "Clear") {
-            setImage(sunnyDay)
-        }
-        if (weather == "Thunderstorm") {
-            setImage(storm)
-        }
+        setImage(weatherImages[weather])
     }, [newCity])
 
 
