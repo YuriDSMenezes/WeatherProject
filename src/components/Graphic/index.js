@@ -10,15 +10,15 @@ import {
 
 
 
-export default function Graphic({dates}) {
+export default function Graphic({weatherInfos}) {
     const data = [
-        { name: 'Monday', temperature: dates.tempCelcius },
-        { name: 'Tuesday', temperature: dates.tempCelcius },
-        { name: 'Wednesday', temperature: dates.tempCelcius },
-        { name: 'thursday', temperature: dates.tempCelcius },
-        { name: 'Friday', temperature: dates.tempCelcius },
-        { name: 'Saturday', temperature: dates.tempCelcius },
-        { name: 'Sunday', temperature: dates.tempCelcius },
+        { name: 'Monday', temperature: weatherInfos.tempCelcius },
+        { name: 'Tuesday', temperature: weatherInfos.tempCelcius },
+        { name: 'Wednesday', temperature: weatherInfos.tempCelcius },
+        { name: 'thursday', temperature: weatherInfos.tempCelcius },
+        { name: 'Friday', temperature: weatherInfos.tempCelcius },
+        { name: 'Saturday', temperature: weatherInfos.tempCelcius },
+        { name: 'Sunday', temperature: weatherInfos.tempCelcius },
     ];
 
 

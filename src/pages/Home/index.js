@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
-import api from '../../services/api'
+import React, { useState, useEffect } from "react";
 
+import { api, api_key } from '../../services/api';
 
-import ContainerLeft from '../../components/containerLeft'
-import ContainerRight from '../../components/containerRight'
+import LeftContainer from '../../components/LeftContainer'
+import RightContainer from '../../components/RightContainer'
+import { MainContent } from "./styles";
 
-import { Container} from "./styles";
+export default function Main() {
+    const [latitude, setLatitude] = useState();
+    const [longitude, setLongitude] = useState();
 
-import { SolarSystemLoading } from 'react-loadingg'
-
-export default function Home() {
-    const [dates, setDates] = useState()
-    const [city, setCity] = useState('Brasília')
-    const [newCity, setNewCity] = useState("Brasília")
-    const [loading, setLoading] = useState(true);
+    const [weatherInfos, setWeatherInfos] = useState([]);
 
     function convertCelsius(temp) {
         const cell = Math.floor(temp - 273.15)
@@ -21,13 +18,27 @@ export default function Home() {
     }
 
     useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                const { latitude, longitude } = position.coords;
+                setLatitude(latitude);
+                setLongitude(longitude);
+            },
+            err => {
+                console.log(err);
+            },
+            {
+                timeout: 10000
+            }
+        )
+    }, [])
+
+    useEffect(() => {
         async function callApi() {
-            setLoading(true)
-            const API_KEY = '0ccad757b8948d21b05011856bae6950'
-            const api_call = await api.get(`/weather?q=${newCity},br&appid=${API_KEY}`)
-            const response = api_call.data
+            const api_geoLocation = await api.get(`/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`)
+            const response = api_geoLocation.data;
             const description = response.weather.map(d => d.main)
-            setDates({
+            setWeatherInfos({
                 city: response.name,
                 tempFahrenheit: response.main.temp,
                 tempCelcius: convertCelsius(response.main.temp),
@@ -35,25 +46,16 @@ export default function Home() {
                 tempMin: convertCelsius(response.main.temp_min),
                 humidity: response.main.humidity,
                 clouds: response.clouds.all,
-                main: description
+                climate: description
             })
         }
         callApi()
-
-        setTimeout(() => {
-            setTimeout(setLoading(false))
-        }, 1000);
-
-    }, [newCity])
+    }, [longitude])
 
     return (
-        <Container>
-            {loading ? <SolarSystemLoading /> : (
-                <>
-                    <ContainerLeft setNewCity={setNewCity} newCity={newCity} city={city} dates={dates} setCity={setCity} weather={dates.main} />
-                    <ContainerRight dates={dates} weather={dates.main} />
-                </>
-            )}
-        </Container>
+        <MainContent>
+            <LeftContainer weatherInfos={weatherInfos} />
+            <RightContainer weatherInfos={weatherInfos} />
+        </MainContent>
     );
 }
