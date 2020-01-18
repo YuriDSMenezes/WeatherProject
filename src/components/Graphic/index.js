@@ -12,23 +12,23 @@ import {
 
 export default function Graphic({weatherInfos}) {
     const data = [
-        { name: 'Monday', temperature: weatherInfos.tempCelcius },
-        { name: 'Tuesday', temperature: weatherInfos.tempCelcius },
-        { name: 'Wednesday', temperature: weatherInfos.tempCelcius },
-        { name: 'thursday', temperature: weatherInfos.tempCelcius },
-        { name: 'Friday', temperature: weatherInfos.tempCelcius },
-        { name: 'Saturday', temperature: weatherInfos.tempCelcius },
-        { name: 'Sunday', temperature: weatherInfos.tempCelcius },
+        { name: 'Mon', temperature: weatherInfos.tempCelcius },
+        { name: 'Tue', temperature: weatherInfos.tempCelcius },
+        { name: 'Wed', temperature: weatherInfos.tempCelcius },
+        { name: 'thu', temperature: weatherInfos.tempCelcius },
+        { name: 'Fri', temperature: weatherInfos.tempCelcius },
+        { name: 'Sat', temperature: weatherInfos.tempCelcius },
+        { name: 'Sun', temperature: weatherInfos.tempCelcius },
     ];
 
 
     return (
-        <LineChart width={600} height={250} data={data}
-            margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+        <LineChart width={450} height={250} data={data}
+            margin={{ top: 5, right: 0, left: 0, bottom: 5 }}>
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Legend verticalAlign="top" height={36} />
+            <Legend verticalAlign="top" height={36} align="left"/>
             <Line name="Temperature" type="monotone" dataKey="temperature" stroke="#8884d8" align="center" />
         </LineChart>
     )

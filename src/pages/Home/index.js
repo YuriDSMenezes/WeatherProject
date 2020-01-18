@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux'
 
 import { api, api_key } from '../../services/api';
 
@@ -6,7 +7,7 @@ import LeftContainer from '../../components/LeftContainer'
 import RightContainer from '../../components/RightContainer'
 import { MainContent } from "./styles";
 
-export default function Main() {
+function Main({ dispatch }) {
     const [latitude, setLatitude] = useState();
     const [longitude, setLongitude] = useState();
 
@@ -52,10 +53,20 @@ export default function Main() {
         callApi()
     }, [longitude])
 
+    useEffect(() => {
+        dispatch({
+            type: 'WEATHER_INFOS',
+            weatherInfos,
+        })
+    },[weatherInfos])
+
+
     return (
         <MainContent>
-            <LeftContainer weatherInfos={weatherInfos} />
+            <LeftContainer />
             <RightContainer weatherInfos={weatherInfos} />
         </MainContent>
     );
 }
+
+export default connect()(Main)

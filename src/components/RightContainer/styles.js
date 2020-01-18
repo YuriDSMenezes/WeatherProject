@@ -8,12 +8,13 @@ export const ContainerRight = styled.div`
 export const  TitleContent = styled.div`
 display:flex;
 align-items:center;
-justify-content: space-around;
+justify-content: space-between;
 padding-bottom: 20px;
 border-bottom: 1px solid #7d7d7d;
 `
 export const  MainContent = styled.div`
 margin-top: 50px;
+margin-bottom: 20px;
 div:first-child {
     margin-bottom: 30px;
 }
@@ -29,4 +30,7 @@ div {
 }
 
 `
-export const  GraphicContent = styled.div``
+export const  GraphicContent = styled.div`
+padding-top: 30px;
+border-top: 1px solid #999;
+`

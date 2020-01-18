@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { ContainerLeft, ImageBackground, TopContent, DegreesInfo } from './styles'
+import { ContainerLeft, TopContent, DegreesInfo } from './styles'
+import {connect} from 'react-redux'
 
 import { WiCelsius, WiFahrenheit } from "react-icons/wi";
+
 import cloud from '../../assets/clouds.webp'
 import rain from '../../assets/rain.gif'
 import sunnyDay from '../../assets/day.gif'
@@ -10,24 +12,25 @@ import { MainContent } from '../../pages/Home/styles';
 
 import { hour, minutes, dayWeek, day, year, month } from '../../util/dateFormated'
 
+import { api, api_key } from '../../services/api'
 
-export default function LeftContainer({ weatherInfos }) {
+function LeftContainer({ weatherInfos }) {
+
     const [image, setImage] = useState();
     const [city, setCity] = useState(weatherInfos.city);
     const [degrees, setDegrees] = useState('Fahrenheit');
-
-    const weatherImages = {
-        Rain: rain,
-        Thunderstorm: storm,
-        Clouds: cloud,
-        Clear: sunnyDay,
-    }
 
     function handleCity() {
         setCity(city)
     }
 
     useEffect(() => {
+        const weatherImages = {
+            Rain: rain,
+            Thunderstorm: storm,
+            Clouds: cloud,
+            Clear: sunnyDay,
+        }
         setImage(weatherImages[weatherInfos.climate])
     }, [weatherInfos])
 
@@ -39,6 +42,30 @@ export default function LeftContainer({ weatherInfos }) {
         setDegrees("Fahrenheit")
     }
 
+    function convertCelsius(temp) {
+        const cell = Math.floor(temp - 273.15)
+        return cell;
+    }
+
+    // useEffect(() => {
+    //     async function callApi() {
+    //         const api_city = await api.get(`/weather?q=${city},br&&appid=${api_key}`)
+    //         const response = api_city.data;
+    //         const description = response.weather.map(d => d.main)
+    //         ({
+    //             city: response.name,
+    //             tempFahrenheit: response.main.temp,
+    //             tempCelcius: convertCelsius(response.main.temp),
+    //             tempMax: convertCelsius(response.main.temp_max),
+    //             tempMin: convertCelsius(response.main.temp_min),
+    //             humidity: response.main.humidity,
+    //             clouds: response.clouds.all,
+    //             climate: description
+    //         })
+    //     }
+    //     callApi()
+    // }, [])
+
 
     return (
         <ContainerLeft bgImg={image}>
@@ -46,7 +73,7 @@ export default function LeftContainer({ weatherInfos }) {
                 <h1>Weather Project</h1>
                 <input onChange={e => setCity(e.target.value)} placeholder="Type city name"></input>
                 <div>
-                <button onClick={handleCity}>Change</button>
+                    <button onClick={handleCity}>Change</button>
                 </div>
                 <div>
                     <WiCelsius fontSize={50} onClick={handleCelsius} />
@@ -62,3 +89,7 @@ export default function LeftContainer({ weatherInfos }) {
         </ContainerLeft>
     )
 }
+
+export default connect(state => ({
+    weatherInfos: state.weatherInfos
+}))(LeftContainer)

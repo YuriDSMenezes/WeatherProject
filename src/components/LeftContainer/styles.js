@@ -8,6 +8,8 @@ export const ContainerLeft = styled.div`
   display:flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 900px;
+  border-radius: 20px;
 `;
 
 export const TopContent = styled.div`
@@ -51,7 +53,7 @@ justify-content: space-between;
 padding-left: 30px;
 position:relative;
     h1{
-        font-size: 150px;
+        font-size: 100px;
         margin-bottom: 100px;
         
           span{
