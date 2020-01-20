@@ -58,12 +58,12 @@ function Main({ dispatch }) {
             type: 'WEATHER_INFOS',
             weatherInfos,
         })
-    },[weatherInfos])
+    }, [weatherInfos])
 
 
     return (
         <MainContent>
-            <LeftContainer />
+            <LeftContainer setWeatherInfos={setWeatherInfos} />
             <RightContainer weatherInfos={weatherInfos} />
         </MainContent>
     );
