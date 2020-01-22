@@ -13,7 +13,7 @@ import { connect } from 'react-redux'
 import { WiCelsius, WiFahrenheit } from "react-icons/wi";
 
 
-function LeftContainer({ weatherInfos, setWeatherInfos }) {
+function LeftContainer({ weatherInfos, setWeatherInfos, dispatch }) {
     const [image, setImage] = useState("");
     const [city, setCity] = useState(weatherInfos.city);
     const [degrees, setDegrees] = useState('Fahrenheit');
@@ -38,6 +38,14 @@ function LeftContainer({ weatherInfos, setWeatherInfos }) {
         setDegrees("Fahrenheit")
     }
 
+    useEffect(() => {
+        dispatch({
+            type: 'DEGREES_INFOS',
+            degrees,
+        })
+    }, [degrees])
+
+
     function convertCelsius(temp) {
         const cell = Math.floor(temp - 273.15)
         return cell;
@@ -59,8 +67,6 @@ function LeftContainer({ weatherInfos, setWeatherInfos }) {
         })
         setImage(weatherImages[weatherInfos.climate])
     }
-
-    console.log(degrees)
 
     return (
         <>

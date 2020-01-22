@@ -32,7 +32,7 @@ export default function RightContainer({weatherInfos}) {
                 </div>
             </MainContent>
             <GraphicContent>
-                <Graphic weatherInfos={weatherInfos}/>
+                <Graphic/>
             </GraphicContent>
         </ContainerRight>
     )
