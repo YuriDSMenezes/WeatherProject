@@ -60,6 +60,8 @@ function LeftContainer({ weatherInfos, setWeatherInfos }) {
         setImage(weatherImages[weatherInfos.climate])
     }
 
+    console.log(degrees)
+
     return (
         <>
             {weatherInfos.map(info => (
