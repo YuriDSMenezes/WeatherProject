@@ -16,14 +16,14 @@ function Graphic({ weatherInfos, degreesInfo }) {
     const [temp, setTemp] = useState();
 
     useEffect(() => {
-        if(degreesInfo == "Celsius"){
+        if (degreesInfo == "Celsius") {
             weatherInfos.map(i => setTemp(i.tempCelcius))
         }
-        else{
+        else {
             weatherInfos.map(i => setTemp(i.tempFahrenheit))
         }
 
-    }, [degreesInfo,weatherInfos])
+    }, [degreesInfo, weatherInfos])
 
     const data = [
         { name: 'Mon', temperature: temp },

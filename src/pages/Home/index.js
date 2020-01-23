@@ -64,7 +64,7 @@ function Main({ dispatch }) {
     return (
         <MainContent>
             <LeftContainer setWeatherInfos={setWeatherInfos} />
-            <RightContainer weatherInfos={weatherInfos} />
+            <RightContainer/>
         </MainContent>
     );
 }
