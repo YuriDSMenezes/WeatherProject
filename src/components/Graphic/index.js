@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import {
@@ -12,25 +12,28 @@ import {
 
 
 function Graphic({ weatherInfos, degreesInfo }) {
-    const Fahrenheit = weatherInfos.map(temp => temp.tempFahrenheit)
-    const Celsius = weatherInfos.map(temp => temp.tempCelsius)
+
+    const [temp, setTemp] = useState();
+
+    useEffect(() => {
+        if(degreesInfo == "Celsius"){
+            weatherInfos.map(i => setTemp(i.tempCelcius))
+        }
+        else{
+            weatherInfos.map(i => setTemp(i.tempFahrenheit))
+        }
+
+    }, [degreesInfo,weatherInfos])
 
     const data = [
-        { name: 'Mon', temperature: Fahrenheit },
-        { name: 'Tue', temperature: Fahrenheit },
-        { name: 'Wed', temperature: Fahrenheit },
-        { name: 'thu', temperature: Fahrenheit },
-        { name: 'Fri', temperature: Fahrenheit },
-        { name: 'Sat', temperature: Fahrenheit },
-        { name: 'Sun', temperature: Fahrenheit },
+        { name: 'Mon', temperature: temp },
+        { name: 'Tue', temperature: temp },
+        { name: 'Wed', temperature: temp },
+        { name: 'thu', temperature: temp },
+        { name: 'Fri', temperature: temp },
+        { name: 'Sat', temperature: temp },
+        { name: 'Sun', temperature: temp },
     ];
-
-    // if (degreesInfo == 'Celsius') {
-    //     data.map(degree => degree.temperature)
-    // }
-
-
-
 
     return (
         <LineChart width={500} height={250} data={data}
