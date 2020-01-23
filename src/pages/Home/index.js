@@ -6,6 +6,7 @@ import { api, api_key } from '../../services/api';
 import LeftContainer from '../../components/LeftContainer'
 import RightContainer from '../../components/RightContainer'
 import { MainContent } from "./styles";
+import { toast } from "react-toastify";
 
 function Main({ dispatch }) {
     const [latitude, setLatitude] = useState();
@@ -35,22 +36,27 @@ function Main({ dispatch }) {
     }, [])
 
     useEffect(() => {
-        async function callApi() {
-            const api_geoLocation = await api.get(`/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`)
-            const response = api_geoLocation.data;
-            const description = response.weather.map(d => d.main)
-            setWeatherInfos({
-                city: response.name,
-                tempFahrenheit: response.main.temp,
-                tempCelcius: convertCelsius(response.main.temp),
-                tempMax: convertCelsius(response.main.temp_max),
-                tempMin: convertCelsius(response.main.temp_min),
-                humidity: response.main.humidity,
-                clouds: response.clouds.all,
-                climate: description
-            })
+        try {
+            async function callApi() {
+                const api_geoLocation = await api.get(`/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`)
+                const response = api_geoLocation.data;
+                const description = response.weather.map(d => d.main)
+                setWeatherInfos({
+                    city: response.name,
+                    tempFahrenheit: response.main.temp,
+                    tempCelcius: convertCelsius(response.main.temp),
+                    tempMax: convertCelsius(response.main.temp_max),
+                    tempMin: convertCelsius(response.main.temp_min),
+                    humidity: response.main.humidity,
+                    clouds: response.clouds.all,
+                    climate: description
+                })
+            }
+            callApi()
+        }catch(err) {
+            toast.error("Não foi possível achar sua localização")
         }
-        callApi()
+        
     }, [longitude])
 
     useEffect(() => {
@@ -64,7 +70,7 @@ function Main({ dispatch }) {
     return (
         <MainContent>
             <LeftContainer setWeatherInfos={setWeatherInfos} />
-            <RightContainer/>
+            <RightContainer />
         </MainContent>
     );
 }

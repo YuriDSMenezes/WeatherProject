@@ -11,6 +11,7 @@ import { api, api_key } from '../../services/api'
 
 import { connect } from 'react-redux'
 import { WiCelsius, WiFahrenheit } from "react-icons/wi";
+import { toast } from 'react-toastify'
 
 
 function LeftContainer({ weatherInfos, setWeatherInfos, dispatch }) {
@@ -52,20 +53,24 @@ function LeftContainer({ weatherInfos, setWeatherInfos, dispatch }) {
     }
 
     async function handleAddNewCity() {
-        const api_city = await api.get(`/weather?q=${city},br&&appid=${api_key}`)
-        const response = api_city.data;
-        const description = response.weather.map(sky => sky.main)
-        setWeatherInfos({
-            city: response.name,
-            tempFahrenheit: response.main.temp,
-            tempCelcius: convertCelsius(response.main.temp),
-            tempMax: convertCelsius(response.main.temp_max),
-            tempMin: convertCelsius(response.main.temp_min),
-            humidity: response.main.humidity,
-            clouds: response.clouds.all,
-            climate: description
-        })
-        setImage(weatherImages[weatherInfos.climate])
+        try {
+            const api_city = await api.get(`/weather?q=${city},br&&appid=${api_key}`)
+            const response = api_city.data;
+            const description = response.weather.map(sky => sky.main)
+            setWeatherInfos({
+                city: response.name,
+                tempFahrenheit: response.main.temp,
+                tempCelcius: convertCelsius(response.main.temp),
+                tempMax: convertCelsius(response.main.temp_max),
+                tempMin: convertCelsius(response.main.temp_min),
+                humidity: response.main.humidity,
+                clouds: response.clouds.all,
+                climate: description
+            })
+            setImage(weatherImages[weatherInfos.climate])
+        } catch (err) {
+            toast.error("Não foi possível localizar a cidade")
+        }
     }
 
     return (
