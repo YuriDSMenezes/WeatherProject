@@ -1,16 +1,19 @@
 import React from 'react'
 import { MdHome, MdArrowUpward, MdArrowDownward, MdCloud } from 'react-icons/md'
 import { WiHumidity } from 'react-icons/wi'
-import { ContainerRight,TitleContent,MainContent,GraphicContent } from './styles'
+import { ContainerRight, TitleContent, MainContent, GraphicContent } from './styles'
 import Graphic from '../Graphic'
 
-export default function RightContainer({weatherInfos}) {
+export default function RightContainer({ weatherInfos }) {
     return (
         <ContainerRight>
             <TitleContent>
-                    <h3>City <MdHome /> </h3>
-                    <h2>{weatherInfos.climate}</h2>
-                    <p>{weatherInfos.city}</p>
+                <div>
+                    <h3>City</h3>
+                    <MdHome size={18}/>
+                </div>
+                <h2>{weatherInfos.climate}</h2>
+                <p>{weatherInfos.city}</p>
             </TitleContent>
             <MainContent>
                 <div>
@@ -32,7 +35,7 @@ export default function RightContainer({weatherInfos}) {
                 </div>
             </MainContent>
             <GraphicContent>
-                <Graphic/>
+                <Graphic />
             </GraphicContent>
         </ContainerRight>
     )

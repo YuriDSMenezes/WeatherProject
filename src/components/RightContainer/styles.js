@@ -11,6 +11,11 @@ align-items:center;
 justify-content: space-between;
 padding-bottom: 20px;
 border-bottom: 1px solid #7d7d7d;
+
+div {
+    display: flex;
+    align-items:center;
+}
 `
 export const  MainContent = styled.div`
 margin-top: 50px;
