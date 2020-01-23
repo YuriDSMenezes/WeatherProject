@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ContainerLeft, TopContent, DegreesInfo } from './styles'
+import Loader from 'react-loader-spinner'
+
 
 import cloud from '../../assets/clouds.webp'
 import rain from '../../assets/rain.gif'

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
+import Loader from 'react-loader-spinner'
 
 import { api, api_key } from '../../services/api';
 
@@ -11,6 +12,7 @@ import { toast } from "react-toastify";
 function Main({ dispatch }) {
     const [latitude, setLatitude] = useState();
     const [longitude, setLongitude] = useState();
+    const [loading, setLoading] = useState(false);
 
     const [weatherInfos, setWeatherInfos] = useState([]);
 
@@ -36,6 +38,7 @@ function Main({ dispatch }) {
     }, [])
 
     useEffect(() => {
+        setLoading(true)
         try {
             async function callApi() {
                 const api_geoLocation = await api.get(`/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`)
@@ -53,10 +56,13 @@ function Main({ dispatch }) {
                 })
             }
             callApi()
-        }catch(err) {
+            setTimeout(() => {
+                setLoading(false)
+            }, 3000)
+        } catch (err) {
             toast.error("Não foi possível achar sua localização")
         }
-        
+
     }, [longitude])
 
     useEffect(() => {
@@ -68,10 +74,14 @@ function Main({ dispatch }) {
 
 
     return (
-        <MainContent>
-            <LeftContainer setWeatherInfos={setWeatherInfos} />
-            <RightContainer />
-        </MainContent>
+        <>
+            {loading ? <Loader  type="Rings"/> : (
+                <MainContent>
+                    <LeftContainer setWeatherInfos={setWeatherInfos} />
+                    <RightContainer />
+                </MainContent>
+            )}
+        </>
     );
 }
 
