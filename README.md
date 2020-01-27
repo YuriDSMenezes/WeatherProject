@@ -1,4 +1,4 @@
-<h1 align="center">Weather Project </h1>
+<h1 align="center"> Weather Project </h1>
 
 
 <h4 align="center">Project that shows the climate of the informed city.
@@ -14,6 +14,8 @@
   
 <img src="https://user-images.githubusercontent.com/49171033/72296960-9fc8e380-3639-11ea-86d7-47a6a5442862.png" />
 
+<br />
+
 ## :rocket: Technologies
 -  [ReactJS](https://reactjs.org/)
 -  [Redux](https://redux.js.org/)
@@ -24,6 +26,7 @@
 -  [React-Icons](https://react-icons.netlify.com/)
 -  [react-loader-spinner](https://github.com/mhnpd/react-loader-spinner)
 
+<br />
 
 ## :information_source: How To Use
 
