@@ -1,9 +1,17 @@
-<h1>Weather Project </h1>
-<h4>Project that shows the climate of the informed city. Accept to inform your location to show the climate of your region </h4>
+<h1 align="center">Weather Project </h1>
+
+
+<h4 align="center">Project that shows the climate of the informed city.
+  <br />
+  Accept to inform your location to show the climate of your region
+</h4>
+
 <p align="center">
   <a href="#rocket-technologies">Techs</a>
    <a href="#information_source-how-to-use">How to use</a>
-  </p>
+</p>
+  
+  
 <img src="https://user-images.githubusercontent.com/49171033/72296960-9fc8e380-3639-11ea-86d7-47a6a5442862.png" />
 
 ## :rocket: Technologies
