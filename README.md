@@ -2,7 +2,7 @@
 <h4>Project that shows the climate of the informed city. Accept to inform your location to show the climate of your region </h4>
 <p align="center">
   <a href="#rocket-technologies">Techs</a>
-  <a href="=#information_source-how-to-use">How to use</a>
+  <a href="=#information_source-How-to-use">How to use</a>
   </p>
 <img src="https://user-images.githubusercontent.com/49171033/72296960-9fc8e380-3639-11ea-86d7-47a6a5442862.png" />
 
