@@ -7,9 +7,9 @@
 </h4>
 
 <p align="center">
-  <a href="#rocket-technologies">Techs</a>
-   <a href="#information_source-how-to-use">How to use</a>
-  <a href="#wrench-fix"> Check Error </a>
+  | <a href="#rocket-technologies">Techs</a> |
+   <a href="#information_source-how-to-use">How to use</a> |
+  <a href="#wrench-fix"> Bug </a> |
 </p>
   
   
