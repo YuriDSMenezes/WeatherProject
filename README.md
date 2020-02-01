@@ -9,6 +9,7 @@
 <p align="center">
   <a href="#rocket-technologies">Techs</a>
    <a href="#information_source-how-to-use">How to use</a>
+  <a href="wrench-fix"> Check Error </a>
 </p>
   
   
@@ -40,7 +41,9 @@ $ yarn install
 # Run the app
 $ yarn start
 ```
-:wrench: Run - yarn add axios - if this error appears and then yarn start  - (maintenance)
+## :wrench: Fix
+- Run yarn add axios - 
+if this error appears and then yarn start  - (maintenance)
 
 <br />
 
