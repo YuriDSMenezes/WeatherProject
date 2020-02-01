@@ -40,3 +40,9 @@ $ yarn install
 # Run the app
 $ yarn start
 ```
+:wrench: Run - yarn add axios - if this error appears and then yarn start  - (maintenance)
+
+<br />
+
+![err](https://user-images.githubusercontent.com/49171033/73587979-86c98a80-44a1-11ea-80a7-40819cb615b3.png)
+
